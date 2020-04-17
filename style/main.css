@@ -42,13 +42,6 @@ body {
   background-color: #ccc;
 }
 
-/* Content box */
-.contents {
-  height: 100%;
-  width: 65%;
-  background-color: #aaa;
-}
-
 /* Header */
 header {
   display: flex;
@@ -141,4 +134,55 @@ header i:hover {
 .bell i {
   font-size: 20px;
   color: #8edafd;
+}
+
+/* Contents box */
+.contents {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 65%;
+  background-color: #aaa;
+}
+
+/* Contents Main */
+.contents-main {
+  flex-grow: 1;
+  background-image: url(../img/mine.jpg);
+}
+
+/* Contents footer */
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 35px;
+  background-color: #f3eeeb;
+}
+
+footer .new-message {
+ flex-grow: 1;
+ border: none;
+ outline: none;
+ height: 45px;
+ padding: 15px 12px;
+ font-size: 12px;
+}
+
+footer .new-message:hover,
+footer .new-message:focus {
+  border: 2px solid #6b9af1;
+}
+
+.footer-icons i {
+  font-size: 23px;
+  color: #72787b;
+}
+
+.icon-left {
+  margin-right: 35px;
+}
+
+.icon-right {
+  margin-left: 35px;
 }
