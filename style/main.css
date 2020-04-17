@@ -35,13 +35,6 @@ body {
   display: flex;
 }
 
-/* Side box */
-.side {
-  height: 100%;
-  width: 35%;
-  background-color: #ccc;
-}
-
 /* Header */
 header {
   display: flex;
@@ -67,7 +60,7 @@ header i {
 }
 
 header i:hover {
-  color: #fff;
+  color: #0bceba;
 }
 
 .icons i {
@@ -80,19 +73,12 @@ header i:hover {
   align-items: center;
 }
 
-.informations {
-  display: flex;
-  flex-direction: column;
-}
-
-.informations h4 {
-  font-weight: 400;
-  margin-bottom: 3px;
-}
-
-.informations p {
-  font-size: 12px;
-  color: #72787b;
+/* Side box */
+.side {
+  height: 100%;
+  width: 35%;
+  background-color: #fff;
+  border-right: 1px solid #d6d6d6;
 }
 
 /* Side main */
@@ -136,13 +122,97 @@ header i:hover {
   color: #8edafd;
 }
 
+/* Sezione input chat */
+.new-chat_container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 5px;
+}
+
+.new-chat_icon {
+  display: flex;
+  align-items: center;
+  padding: 6px 35px 6px 25px;
+  border: 1px solid #f6f6f6;
+  border-right: transparent;
+}
+
+.new-chat_icon i {
+  font-size: 16px;
+  color: #b1b1b1;
+}
+
+.new-chat {
+  flex-grow: 1;
+  border: 1px solid #f6f6f6;
+  border-left: transparent;
+  outline: none;
+  height: 30px;
+  padding: 12px 10px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+/* Sezione contatti */
+.contacts_container {
+  height: 400px;
+  overflow: hidden;
+  overflow: scroll;
+}
+
+.contacts {
+  list-style: none;
+}
+
+.contacts li {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 10px 10px 15px;
+  border-bottom: 1px solid #f6f6f6;
+  transition: background-color .2s linear;
+  cursor: pointer;
+}
+
+.contacts li:last-child {
+  border-bottom: none;
+}
+
+.contacts li:hover,
+.contacts li:focus {
+  background-color: #eaebeb;
+}
+
+.contacts-user {
+  display: flex;
+  align-items: center;
+}
+
+.contacts-user img {
+  max-width: 50px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.contacts_last-chat {
+  font-size: 12px;
+  margin-top: 10px;
+  color: #72787b;
+}
+
 /* Contents box */
 .contents {
   display: flex;
   flex-direction: column;
   height: 100%;
   width: 65%;
-  background-color: #aaa;
+  background-color: #eaeaea;
+}
+
+/* Contents header */
+.contents-header {
+  border-bottom: 2px solid #eaeaea;
 }
 
 /* Contents Main */
@@ -160,6 +230,7 @@ footer {
   background-color: #f3eeeb;
 }
 
+/* Footer input */
 footer .new-message {
  flex-grow: 1;
  border: none;
@@ -171,12 +242,19 @@ footer .new-message {
 
 footer .new-message:hover,
 footer .new-message:focus {
-  border: 2px solid #6b9af1;
+  outline: 2px solid #6b9af1;
 }
 
-.footer-icons i {
+/* Footer icons */
+footer i {
   font-size: 23px;
   color: #72787b;
+  cursor: pointer;
+  transition: color .2s linear;
+}
+
+footer i:hover {
+  color: #0bceba;
 }
 
 .icon-left {
@@ -184,5 +262,26 @@ footer .new-message:focus {
 }
 
 .icon-right {
+  display: none; /* Visualizzo con jQuery al focus di .new-message */
   margin-left: 35px;
+}
+
+/* Utilities */
+.informations {
+  display: flex;
+  flex-direction: column;
+}
+
+.informations h4 {
+  font-weight: 400;
+  margin-bottom: 3px;
+}
+
+.informations p {
+  font-size: 12px;
+  color: #72787b;
+}
+
+.icon-right.active {
+  display: block;
 }
