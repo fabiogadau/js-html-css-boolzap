@@ -8,7 +8,18 @@ Usate un template nell’html e clone() per l’ inserimento del messaggio da fa
 */
 $( document ).ready(function() {
   
+  var newMessage = $('.new-message');
+  var microphoneIcon = $('.fa-microphone');
+  var sendIcon = $('.fa-paper-plane');
 
+  newMessage.focus( function() {
+    microphoneIcon.remove();
+    sendIcon.addClass('active');
+  });
+
+  sendIcon.click( function() {
+    
+  })
 
 
 
