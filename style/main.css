@@ -7,4 +7,138 @@
 
 body {
   font-family: 'Lato', sans-serif;
+  background-color: #fff;
+}
+
+/* Contenitore generale */
+#app {
+  height: 100vh;
+  width: 100vw;
+  background-image: linear-gradient(
+    to bottom,
+    #009688 0%,
+    #009688 15%,
+    #dcdbd2 15%,
+    #dcdbd2 100%
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Contenitore principale */
+#box {
+  height: 95%;
+  width: 80%;
+  min-width: 900px;
+  background-color: #fff;
+  display: flex;
+}
+
+/* Side box */
+.side {
+  height: 100%;
+  width: 35%;
+  background-color: #ccc;
+}
+
+/* Content box */
+.contents {
+  height: 100%;
+  width: 65%;
+  background-color: #aaa;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px;
+  background-color: #eaeaea;
+  cursor: pointer;
+}
+
+header img {
+  max-width: 50px;
+  border-radius: 50%; 
+  margin-right: 10px;
+}
+
+/* Icone */
+header i {
+  font-size: 21px;
+  color: #b1b1b1;
+  cursor: pointer;
+  transition: color .2s linear;
+}
+
+header i:hover {
+  color: #fff;
+}
+
+.icons i {
+  margin-right: 15px;
+}
+
+/* Dati utente */
+.contents-user {
+  display: flex;
+  align-items: center;
+}
+
+.informations {
+  display: flex;
+  flex-direction: column;
+}
+
+.informations h4 {
+  font-weight: 400;
+  margin-bottom: 3px;
+}
+
+.informations p {
+  font-size: 12px;
+  color: #72787b;
+}
+
+/* Side main */
+/* Sezione avviso */
+.notice {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #8edafd;
+  cursor: pointer;
+  transition: background-color .2s linear;
+}
+
+.notice:hover {
+  background-color: #0bceba;
+}
+
+.notice .informations p {
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color .2s linear;
+}
+
+.notice .informations p:hover {
+  color: #fff;
+}
+
+.bell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.bell i {
+  font-size: 20px;
+  color: #8edafd;
 }
