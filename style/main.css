@@ -155,13 +155,10 @@ header i:hover {
 }
 
 /* Sezione contatti */
-.contacts_container {
-  height: 720px;
-  overflow-y: scroll;
-}
-
 .contacts {
   list-style: none;
+  overflow-y: auto;
+  height: calc(100vh - 216px);
 }
 
 .contacts li {
