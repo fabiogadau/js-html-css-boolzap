@@ -336,3 +336,8 @@ footer i:hover {
 .icon-right.active {
   display: block;
 }
+
+.template,
+.template-contacts {
+  display: none;
+}
