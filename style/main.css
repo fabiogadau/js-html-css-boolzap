@@ -156,9 +156,8 @@ header i:hover {
 
 /* Sezione contatti */
 .contacts_container {
-  height: 400px;
-  overflow: hidden;
-  overflow: scroll;
+  height: 720px;
+  overflow-y: scroll;
 }
 
 .contacts {
@@ -190,9 +189,13 @@ header i:hover {
 }
 
 .contacts-user img {
-  max-width: 50px;
+  max-width: 55px;
   margin-right: 10px;
   border-radius: 50%;
+}
+
+.contacts-user .informations p {
+  color: #b7b9bb;
 }
 
 .contacts_last-chat {
@@ -219,6 +222,54 @@ header i:hover {
 .contents-main {
   flex-grow: 1;
   background-image: url(../img/mine.jpg);
+  display: flex;
+  justify-content: space-between;
+}
+
+.contents-main ul {
+  list-style: none;
+}
+
+.contents-main ul li {
+  display: flex;
+  min-height: 50px;
+  margin-bottom: 60px;
+  font-size: 14px;
+  padding: 15px 5px 5px 10px;
+  border-radius: 8px;
+}
+
+.contents-main ul li span {
+  align-self: flex-end;
+  font-size: 10px;
+  margin-left: 20px;
+  color: #b7b9bb;
+}
+
+/* Messaggi ricevuti */
+.received_container {
+  margin-left: 100px;
+}
+
+.received li {
+  background-color: #fff;
+}
+
+.received li:first-child {
+  margin-top: 100px;
+}
+
+/* Messaggi inviati */
+.sent_container {
+  margin-right: 100px;
+}
+
+.sent li {
+  background-color: #d5faba;
+}
+
+.sent li:first-child {
+  margin-top: 50px;
 }
 
 /* Contents footer */
