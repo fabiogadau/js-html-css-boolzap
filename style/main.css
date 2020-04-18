@@ -221,6 +221,7 @@ header i:hover {
   background-image: url(../img/mine.jpg);
   display: flex;
   justify-content: space-between;
+  overflow-y: auto;
 }
 
 .contents-main ul {

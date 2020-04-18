@@ -88,8 +88,8 @@ $( document ).ready(function() {
 
     setTimeout( function() {
 
-      // Aggiungo al messaggio il testo ottenuto dall'input
-      $('.template-contacts li p').text(newText);
+      // Aggiungo al messaggio di risposta un testo random
+      $('.template-contacts li p').text(randomString());
 
       // Aggiungo al messaggio l'orario di invio
       $('.template-contacts li span').text(actualTime);
@@ -101,6 +101,26 @@ $( document ).ready(function() {
       receivedMessages.append(newReceivedMessage);
   
     }, 2000);
+
+  };
+
+  // Ottenere una stringa random da un array
+  function randomString(){
+
+    // Creo l'array che contiene le stringhe
+    var strings = [
+      'Ciao come stai?',
+      'ciao k fai',
+      'tvb',
+      '6 bll',
+      'sono un testo random'
+    ];
+    
+    // Creo una variabile che sarà la stringa random
+    var newString = strings[Math.floor( Math.random() * strings.length )];
+    
+    // La funzione ritorna la stringa random
+    return newString; 
 
   };
 
