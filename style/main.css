@@ -230,7 +230,8 @@ header i:hover {
 
 .contents-main ul li {
   display: flex;
-  width: 155px;
+  justify-content: space-between;
+  max-width: 300px;
   min-height: 50px;
   margin-bottom: 60px;
   font-size: 14px;
@@ -239,7 +240,7 @@ header i:hover {
 }
 
 .contents-main ul li p {
-  width: 95px;
+  flex-grow: 1;
   overflow-wrap: anywhere;
 }
 

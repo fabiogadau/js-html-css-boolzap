@@ -16,22 +16,33 @@ $( document ).ready(function() {
   var receivedMessages = $('.received');
   var time = new Date();
   var actualTime = ( time.getHours() + ':' + time.getMinutes() );
-  console.log(actualTime);
 
   // Cambio dell'icona al focus dell'input
   newMessage.focus( function() {
     
     // Rimuovo l'icona precedente
-    microphoneIcon.remove();
+    microphoneIcon.removeClass('active');
 
     // Aggiungo classe active per visualizzare l'icona di invio messaggio
     sendIcon.addClass('active');
   
   });
 
-  // Invio del messaggio al click dell'icona visualizzata precedentemente
+  // All'uscita dall'input visualizzo di nuovo l'icona del microfono
+  $('.contents-main').on('click', function() {
+
+    // Rimuovo l'icona precedente
+    sendIcon.removeClass('active');
+
+    // Aggiungo classe active per visualizzare l'icona del microfono
+    microphoneIcon.addClass('active');
+
+  });
+
+  // Invio del messaggio al click dell'icona di invio messaggio
   sendIcon.click( function() {
     
+    // Funzione di invio messaggio
     sendNewMessage();
 
     // Aggiunta di un messaggio ricevuto dai contatti
@@ -45,6 +56,7 @@ $( document ).ready(function() {
     // Validazione tasto invio per compatibilità browser
     if ( event.which == 13 || event.keyCode == 13 ) {
       
+      // Funzione di invio messaggio
       sendNewMessage();
 
       // Aggiunta di un messaggio ricevuto dai contatti
@@ -71,7 +83,7 @@ $( document ).ready(function() {
       // Aggiungo al messaggio il testo ottenuto dall'input
       $('.template li p').text(newText);
 
-      // Clono il li del template
+      // Clono il li del .template
       var newInChatMessage = $('.template li').clone();
       
       // Aggiungo il li ottenuto alla chat
@@ -88,7 +100,7 @@ $( document ).ready(function() {
 
   };
 
-  // Funzione che visualizza messaggi ricevuti
+  // Funzione che visualizza messaggi ricevuti dopo tot tempo
   function contactsMessages(){
 
     setTimeout( function() {
@@ -96,7 +108,7 @@ $( document ).ready(function() {
       // Aggiungo al messaggio di risposta un testo random
       $('.template-contacts li p').text(randomString());
 
-      // Aggiungo al messaggio l'orario di invio
+      // Aggiungo al messaggio di risposta l'orario di invio
       $('.template-contacts li span').text(actualTime);
       
       // Clono il li di .template-contacts
@@ -109,7 +121,7 @@ $( document ).ready(function() {
 
   };
 
-  // Ottenere una stringa random da un array
+  // Funzione che ottiene una stringa random da un array
   function randomString(){
 
     // Creo l'array che contiene le stringhe
@@ -120,7 +132,8 @@ $( document ).ready(function() {
       '6 bll',
       'aiò',
       'bla bla bla',
-      'sono un testo random'
+      'sono un testo random',
+      'ciao sono un testo più lungo e servo a controllare se il layout è a posto'
     ];
     
     // Creo una variabile che sarà la stringa random
