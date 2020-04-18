@@ -76,7 +76,12 @@ $( document ).ready(function() {
       
       // Aggiungo il li ottenuto alla chat
       sentMessages.append(newInChatMessage);
+
     }
+
+    // Scroll automatico del contenitore della chat
+    var chatContainer = $('.contents-main');
+    chatContainer.scrollTop(chatContainer.innerHeight());
 
     // Reset dell'input
     newMessage.val('');
@@ -113,6 +118,8 @@ $( document ).ready(function() {
       'ciao k fai',
       'tvb',
       '6 bll',
+      'aiò',
+      'bla bla bla',
       'sono un testo random'
     ];
     
