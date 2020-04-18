@@ -13,6 +13,10 @@ $( document ).ready(function() {
   var microphoneIcon = $('.fa-microphone');
   var sendIcon = $('.fa-paper-plane');
   var sentMessages = $('.sent');
+  var receivedMessages = $('.received');
+  var time = new Date();
+  var actualTime = ( time.getHours() + ':' + time.getMinutes() );
+  console.log(actualTime);
 
   // Cambio dell'icona al focus dell'input
   newMessage.focus( function() {
@@ -61,11 +65,14 @@ $( document ).ready(function() {
     // Validazione e aggiunta del testo alla chat
     if ( newText !== '' ) {
       
+      // Aggiungo al messaggio l'orario di invio
+      $('.template li span').text(actualTime);
+
+      // Aggiungo al messaggio il testo ottenuto dall'input
+      $('.template li p').text(newText);
+
       // Clono il li del template
       var newInChatMessage = $('.template li').clone();
-      
-      // Ci aggiungo il testo ottenuto dall'input
-      newInChatMessage.prepend(newText);
       
       // Aggiungo il li ottenuto alla chat
       sentMessages.append(newInChatMessage);
@@ -81,11 +88,14 @@ $( document ).ready(function() {
 
     setTimeout( function() {
 
+      // Aggiungo al messaggio il testo ottenuto dall'input
+      $('.template-contacts li p').text(newText);
+
+      // Aggiungo al messaggio l'orario di invio
+      $('.template-contacts li span').text(actualTime);
+      
       // Clono il li di .template-contacts
       var newReceivedMessage = $('.template-contacts li').clone();
-  
-      // Ottengo la chat dei messaggi ricevuti
-      var receivedMessages = $('.received');
   
       // Aggiungo alla chat il messaggio clonato
       receivedMessages.append(newReceivedMessage);

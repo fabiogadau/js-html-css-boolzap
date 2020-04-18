@@ -229,6 +229,7 @@ header i:hover {
 
 .contents-main ul li {
   display: flex;
+  width: 155px;
   min-height: 50px;
   margin-bottom: 60px;
   font-size: 14px;
@@ -236,8 +237,13 @@ header i:hover {
   border-radius: 8px;
 }
 
+.contents-main ul li p {
+  overflow-wrap: anywhere;
+}
+
 .contents-main ul li span {
   align-self: flex-end;
+  justify-self: self-end;
   font-size: 10px;
   margin-left: 20px;
   color: #b7b9bb;
