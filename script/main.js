@@ -19,6 +19,7 @@ $( document ).ready(function() {
   var microphoneIcon = $('.fa-microphone');
   var sendIcon = $('.fa-paper-plane');
   var chatMessages = $('.container-messages');
+  var search = $('.new-chat');
 
   // Cambio dell'icona al focus dell'input
   newMessage.on('focus blur', function() {
@@ -67,6 +68,23 @@ $( document ).ready(function() {
     }
 
   });
+
+  search.keyup(function() {
+
+    if ( $(this).value.trim().length == 0  ) {
+      $('.contact').addClass('visible');
+    }
+    else {
+      $('.contact').removeClass('visible');
+    }
+    
+    
+
+    
+
+    
+
+  } );
 
   // Funzioni
 

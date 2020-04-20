@@ -338,7 +338,11 @@ footer i:hover {
   display: block;
 }
 
-.contacts li.active {
+.contacts_container .contacts .contact {
+  display: none;
+}
+
+.contacts_container .contacts .contact.visible {
   display: flex;
   background-color: #eaebeb;
   border-bottom: none;
