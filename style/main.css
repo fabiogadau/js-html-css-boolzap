@@ -136,11 +136,13 @@ header i:hover {
   padding: 6px 35px 6px 25px;
   border: 1px solid #f6f6f6;
   border-right: transparent;
+  cursor: pointer;
 }
 
 .new-chat_icon i {
   font-size: 16px;
   color: #b1b1b1;
+  cursor: pointer;
 }
 
 .new-chat {
@@ -175,14 +177,19 @@ header i:hover {
   border-bottom: none;
 }
 
-.contacts li:hover,
-.contacts li:focus {
+.contacts li:hover {
   background-color: #eaebeb;
 }
 
 .contacts-user {
   display: flex;
   align-items: center;
+}
+
+.contacts li.active {
+  display: flex;
+  background-color: #eaebeb;
+  border-bottom: none;
 }
 
 .contacts-user img {
@@ -222,6 +229,7 @@ header i:hover {
   display: flex;
   justify-content: space-between;
   overflow-y: auto;
+  padding: 0 100px;
 }
 
 .contents-main ul {
@@ -231,7 +239,7 @@ header i:hover {
 .contents-main ul li {
   display: flex;
   justify-content: space-between;
-  max-width: 300px;
+  max-width: 155px;
   min-height: 50px;
   margin-bottom: 60px;
   font-size: 14px;
@@ -253,10 +261,6 @@ header i:hover {
 }
 
 /* Messaggi ricevuti */
-.received_container {
-  margin-left: 100px;
-}
-
 .received li {
   background-color: #fff;
 }
@@ -266,10 +270,6 @@ header i:hover {
 }
 
 /* Messaggi inviati */
-.sent_container {
-  margin-right: 100px;
-}
-
 .sent li {
   background-color: #d5faba;
 }

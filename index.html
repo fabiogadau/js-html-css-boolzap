@@ -55,17 +55,19 @@
             <!-- Sezione input chat -->
             <section class="new-chat_container">
               <div class="new-chat_icon">
-                <i class="fas fa-search"></i>
+                <label for="new-chat">
+                  <i class="fas fa-search"></i>
+                </label>
               </div>
 
-              <input type="text" class="new-chat" placeholder="Cerca o inizia una nuova chat">
+              <input type="text" id="new-chat" name="new-chat" class="new-chat" placeholder="Cerca o inizia una nuova chat">
             </section>
 
             <!-- Sezione contatti -->
             <section class="contacts_container">
               <ul class="contacts">
                 
-                <li>
+                <li class="active">
                   <div class="contacts-user">
                     <img src="img/avatar_1.jpg" alt="avatar">
                     <div class="informations">
@@ -189,7 +191,6 @@
           <main class="contents-main">
 
             <!-- Messaggi ricevuti -->
-            <section class="received_container">
               <ul class="received">
                 
                 <li>
@@ -198,10 +199,8 @@
                 </li>
               
               </ul>
-            </section>
 
             <!-- Messaggi inviati -->
-            <section class="sent_container">
               <ul class="sent">
                 
                 <li>
@@ -215,7 +214,6 @@
                 </li>
               
               </ul>
-            </section>
 
           </main>
 

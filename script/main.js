@@ -1,10 +1,16 @@
 /*
 * Boolzap
+
+Boolzapp (Milestone 1)
 Replica della grafica (allegata sotto con gli assets) con la possibilità di avere messaggi stilati e posizionati diversamente in base a: messaggio dall’utente (verdi) e messaggio dall’interlocutore (bianco) assegnando due classi CSS diverse.
 Aggiunta di un messaggio: l’utente scrive un testo nella parte bassa e cliccando icona ‘invia il testo’ viene aggiunto al thread sopra, come messaggio verde (ricordate focus() )
 Font family: Lato
 Messaggi visibili inizialmente sono inseriti statici nell’HTML
 Usate un template nell’html e clone() per l’ inserimento del messaggio da fare in JS
+
+Boolzapp (Milestone 2)
+Risposta dall’interlocutore: ad ogni inserimento di un messaggio, l’utente riceverà un “ok” come risposta, che apparirà dopo 1 secondo.
+Ricerca utenti: scrivendo qualcosa nell’input a sinistra, vengono visualizzati solo i contatti il cui nome contiene le lettere inserite (es, Marco, Matteo Martina -> Scrivo “mar” rimangono solo Marco e Martina)
 */
 $( document ).ready(function() {
   
