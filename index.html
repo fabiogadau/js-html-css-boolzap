@@ -190,25 +190,20 @@
           <!-- Contents main -->
           <main class="contents-main">
 
-            <!-- Messaggi ricevuti -->
-              <ul class="received">
+            <!-- Messaggi chat -->
+              <ul class="container-messages active">
                 
-                <li>
-                  <p>Ciao come stai?</p>
-                  <span>14:21</span>
-                </li>
-              
-              </ul>
-
-            <!-- Messaggi inviati -->
-              <ul class="sent">
-                
-                <li>
+                <li class="message sent">
                   <p>Ciao come stai?</p>
                   <span>06:20</span>
                 </li>
 
-                <li>
+                <li class="message received">
+                  <p>Ciao come stai?</p>
+                  <span>14:21</span>
+                </li>
+
+                <li class="message sent">
                   <p>Ciao come stai?</p>
                   <span>21:41</span>
                 </li>
@@ -223,7 +218,7 @@
             <i class="far fa-smile icon-left"></i>
             
             <input type="text" class="new-message" placeholder="Scrivi un messaggio">
-
+            
             <i class="fas fa-microphone icon-right active"></i>
             <i class="fas fa-paper-plane icon-right"></i>
             
@@ -237,14 +232,14 @@
 
     <!-- Templates -->
     <div class="template">
-      <li>
+      <li class="message">
         <p></p>
         <span></span>
       </li>
     </div>
 
     <div class="template-contacts">
-      <li>
+      <li class="message">
         <p></p>
         <span></span>
       </li>

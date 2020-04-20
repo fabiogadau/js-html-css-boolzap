@@ -186,12 +186,6 @@ header i:hover {
   align-items: center;
 }
 
-.contacts li.active {
-  display: flex;
-  background-color: #eaebeb;
-  border-bottom: none;
-}
-
 .contacts-user img {
   max-width: 55px;
   margin-right: 10px;
@@ -232,27 +226,31 @@ header i:hover {
   padding: 0 100px;
 }
 
-.contents-main ul {
+.contents-main .container-messages {
+  width: 100%;
   list-style: none;
 }
 
-.contents-main ul li {
+/* Messaggi Chat */
+.contents-main .container-messages .message {
+  float: left;
+  clear: both;
+  margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
   max-width: 155px;
   min-height: 50px;
-  margin-bottom: 60px;
   font-size: 14px;
   padding: 15px 5px 5px 10px;
   border-radius: 8px;
 }
 
-.contents-main ul li p {
+.contents-main .container-messages .message p {
   flex-grow: 1;
   overflow-wrap: anywhere;
 }
 
-.contents-main ul li span {
+.contents-main .container-messages .message span {
   align-self: flex-end;
   justify-self: self-end;
   font-size: 10px;
@@ -261,20 +259,17 @@ header i:hover {
 }
 
 /* Messaggi ricevuti */
-.received li {
+.contents-main .container-messages .message.received {
   background-color: #fff;
 }
 
-.received li:first-child {
-  margin-top: 100px;
-}
-
 /* Messaggi inviati */
-.sent li {
+.contents-main .container-messages .message.sent {
+  float: right;
   background-color: #d5faba;
 }
 
-.sent li:first-child {
+.contents-main .container-messages .message.sent:first-child {
   margin-top: 50px;
 }
 
@@ -340,6 +335,20 @@ footer i:hover {
 }
 
 .icon-right.active {
+  display: block;
+}
+
+.contacts li.active {
+  display: flex;
+  background-color: #eaebeb;
+  border-bottom: none;
+}
+
+.contacts-messages {
+  display: none;
+}
+
+.container-messages.active {
   display: block;
 }
 

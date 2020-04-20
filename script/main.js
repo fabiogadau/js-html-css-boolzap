@@ -18,13 +18,10 @@ $( document ).ready(function() {
   var newMessage = $('.new-message');
   var microphoneIcon = $('.fa-microphone');
   var sendIcon = $('.fa-paper-plane');
-  var sentMessages = $('.sent');
-  var receivedMessages = $('.received');
-  var time = new Date();
-  var actualTime = ( time.getHours() + ':' + time.getMinutes() );
+  var chatMessages = $('.container-messages');
 
   // Cambio dell'icona al focus dell'input
-  newMessage.focus( function() {
+  newMessage.on('focus blur', function() {
     
     // Rimuovo l'icona precedente
     microphoneIcon.removeClass('active');
@@ -84,22 +81,20 @@ $( document ).ready(function() {
     if ( newText !== '' ) {
       
       // Aggiungo al messaggio l'orario di invio
-      $('.template li span').text(actualTime);
+      $('.template .message span').text(actualTime());
 
       // Aggiungo al messaggio il testo ottenuto dall'input
-      $('.template li p').text(newText);
+      $('.template .message p').text(newText);
 
       // Clono il li del .template
-      var newInChatMessage = $('.template li').clone();
+      var newInChatMessage = $('.template .message').clone();
+
+      newInChatMessage.addClass('sent');
       
       // Aggiungo il li ottenuto alla chat
-      sentMessages.append(newInChatMessage);
+      chatMessages.append(newInChatMessage);
 
     }
-
-    // Scroll automatico del contenitore della chat
-    var chatContainer = $('.contents-main');
-    chatContainer.scrollTop(chatContainer.innerHeight());
 
     // Reset dell'input
     newMessage.val('');
@@ -112,18 +107,24 @@ $( document ).ready(function() {
     setTimeout( function() {
 
       // Aggiungo al messaggio di risposta un testo random
-      $('.template-contacts li p').text(randomString());
+      $('.template-contacts .message p').text(randomString());
 
       // Aggiungo al messaggio di risposta l'orario di invio
-      $('.template-contacts li span').text(actualTime);
+      $('.template-contacts .message span').text(actualTime());
       
       // Clono il li di .template-contacts
-      var newReceivedMessage = $('.template-contacts li').clone();
+      var newReceivedMessage = $('.template-contacts .message').clone();
+
+      newReceivedMessage.addClass('received');
   
       // Aggiungo alla chat il messaggio clonato
-      receivedMessages.append(newReceivedMessage);
+      chatMessages.append(newReceivedMessage);
+
+      // Scroll automatico del contenitore della chat
+      var chatContainer = $('.contents-main');
+      chatContainer.scrollTop(chatContainer.innerHeight());
   
-    }, 2000);
+    }, 1000);
 
   };
 
@@ -132,6 +133,7 @@ $( document ).ready(function() {
 
     // Creo l'array che contiene le stringhe
     var strings = [
+      'ok',
       'Ciao come stai?',
       'ciao k fai',
       'tvb',
@@ -149,6 +151,29 @@ $( document ).ready(function() {
     return newString; 
 
   };
+
+  // Funzione orario
+  function actualTime(){
+
+    var time = new Date();
+    var hour = addZero( time.getHours() );
+    var minutes = addZero( time.getMinutes() );
+    var actualTime = ( hour + ':' + minutes );
+
+    return actualTime;
+
+  };
+
+  // Funzione che aggiunge uno zero prima del numero se il numero è inferiore a 10
+  function addZero(number){
+
+    if (number < 10) {
+      number = '0' + number;
+    }
+
+    return number;
+
+  }
 
 
 
