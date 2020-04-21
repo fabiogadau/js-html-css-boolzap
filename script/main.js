@@ -22,8 +22,8 @@ $( document ).ready(function() {
   var newMessage = $('.new-message');
   var microphoneIcon = $('.fa-microphone');
   var sendIcon = $('.fa-paper-plane');
-  var chatMessages = $('.container-messages.active');
   var search = $('.new-chat');
+
 
   // Cambio dell'icona al focus dell'input
   newMessage.on('focus blur', function() {
@@ -36,6 +36,7 @@ $( document ).ready(function() {
   
   });
 
+  
   // All'uscita dall'input visualizzo di nuovo l'icona del microfono
   $('.contents-main').on('click', function() {
 
@@ -47,6 +48,7 @@ $( document ).ready(function() {
 
   });
 
+  
   // Invio del messaggio al click dell'icona di invio messaggio
   sendIcon.click( function() {
     
@@ -58,6 +60,7 @@ $( document ).ready(function() {
   
   });
 
+  
   // Invio del messaggio al keyup del tasto invio
   newMessage.keyup( function(event) {
 
@@ -73,6 +76,7 @@ $( document ).ready(function() {
 
   });
 
+  
   // Filtrare contatti durante la digitazione in un input
   search.keyup(function() {
 
@@ -97,6 +101,7 @@ $( document ).ready(function() {
 
   } );
 
+  
   // Il click sul contatto mostra la conversazione del contatto cliccato
   $('.contact').click(function() {
 
@@ -106,15 +111,27 @@ $( document ).ready(function() {
     // Rimuovere la classe .active
     $('.container-messages').removeClass('active');
 
+    // Stessa cosa con .contents-user
+    $('.contents-user').removeClass('active');
+
     // Aggiungo la classe .active al click del contatto corrispondente
     $('.container-messages[data-contact="' + panel + '"]').addClass('active');
 
+    // Stessa cosa con .contents-user
+    $('.contents-user[data-contact="' + panel + '"]').addClass('active');
+
   });
 
-  // Funzioni
+  
+  /**************************************** 
+  * Funzioni 
+  *****************************************/
 
   // Funzione di aggiunta messaggio alla chat
   function sendNewMessage(){
+
+    // Aggiungo chatMessages nella funzione per renderlo dinamico
+    var chatMessages = $('.container-messages.active');
 
     // Ottengo il valore dell'input, eliminando eventuali spazi
     var newText = newMessage.val().trim();
@@ -149,8 +166,15 @@ $( document ).ready(function() {
 
   };
 
+ 
   // Funzione che visualizza messaggi ricevuti dopo tot tempo
   function contactsMessages(){
+
+    // Aggiungo chatMessages nella funzione per renderlo dinamico
+    var chatMessages = $('.container-messages.active');
+
+    // Stessa cosa con userInfo
+    var userInfo = $('.contents-user.active');
 
     setTimeout( function() {
 
@@ -169,6 +193,8 @@ $( document ).ready(function() {
       // Aggiungo alla chat il messaggio clonato
       chatMessages.append(newReceivedMessage);
 
+      userInfo.find('p').text( 'Ultimo accesso oggi alle ' + actualTime() );
+
       // Scroll automatico del contenitore della chat
       var chatContainer = $('.contents-main');
       chatContainer.scrollTop(chatContainer.innerHeight());
@@ -177,6 +203,7 @@ $( document ).ready(function() {
 
   };
 
+  
   // Funzione che ottiene una stringa random da un array
   function randomString(){
 
@@ -201,6 +228,7 @@ $( document ).ready(function() {
 
   };
 
+  
   // Funzione orario
   function actualTime(){
 
@@ -213,6 +241,7 @@ $( document ).ready(function() {
 
   };
 
+ 
   // Funzione che aggiunge uno zero prima del numero se il numero è inferiore a 10
   function addZero(number){
 

@@ -338,14 +338,12 @@ footer i:hover {
   display: block;
 }
 
-.contacts_container .contacts .contact {
-  
+.contents-user {
+  display: none;
 }
 
-.contacts_container .contacts .contact.visible {
+.contents-user.active {
   display: flex;
-  background-color: #eaebeb;
-  border-bottom: none;
 }
 
 .contacts-messages {
@@ -360,7 +358,6 @@ footer i:hover {
   display: block;
 }
 
-.template,
-.template-contacts {
+.template {
   display: none;
 }
