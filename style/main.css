@@ -339,7 +339,7 @@ footer i:hover {
 }
 
 .contacts_container .contacts .contact {
-  display: none;
+  
 }
 
 .contacts_container .contacts .contact.visible {
@@ -349,6 +349,10 @@ footer i:hover {
 }
 
 .contacts-messages {
+  display: none;
+}
+
+.container-messages {
   display: none;
 }
 

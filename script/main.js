@@ -11,6 +11,10 @@ Usate un template nell’html e clone() per l’ inserimento del messaggio da fa
 Boolzapp (Milestone 2)
 Risposta dall’interlocutore: ad ogni inserimento di un messaggio, l’utente riceverà un “ok” come risposta, che apparirà dopo 1 secondo.
 Ricerca utenti: scrivendo qualcosa nell’input a sinistra, vengono visualizzati solo i contatti il cui nome contiene le lettere inserite (es, Marco, Matteo Martina -> Scrivo “mar” rimangono solo Marco e Martina)
+
+Boolzapp (Milestone 2)
+Click sul contatto mostra la conversazione del contatto cliccato, è possibile inserire nuovi messaggi per ogni conversazione
+Cancella messaggio: cliccando sul messaggio appare un menu a tendina che permette di cancellare il messaggio selezionato
 */
 $( document ).ready(function() {
   
@@ -18,7 +22,7 @@ $( document ).ready(function() {
   var newMessage = $('.new-message');
   var microphoneIcon = $('.fa-microphone');
   var sendIcon = $('.fa-paper-plane');
-  var chatMessages = $('.container-messages');
+  var chatMessages = $('.container-messages.active');
   var search = $('.new-chat');
 
   // Cambio dell'icona al focus dell'input
@@ -69,22 +73,43 @@ $( document ).ready(function() {
 
   });
 
+  // Filtrare contatti durante la digitazione in un input
   search.keyup(function() {
 
-    if ( $(this).value.trim().length == 0  ) {
-      $('.contact').addClass('visible');
-    }
-    else {
-      $('.contact').removeClass('visible');
-    }
-    
-    
+    // this è l'attuale ricerca
+    var newSearch = $(this).val().toLowerCase().trim();
 
-    
+    // each è un ciclo che in questo caso seleziona uno o più elementi con la classe .contact che soddisfano i requisiti all'interno della function di each
+    $('.contact').each( function() {
 
-    
+      // attuale nome del contatto nel loop
+      var contactName = $(this).find('.informations h4').text().toLowerCase();
+
+      // verifica input con nomi contatti
+      if ( contactName.includes(newSearch) ) {
+        $(this).show();
+      }
+      else {
+        $(this).hide();
+      }
+
+    });
 
   } );
+
+  // Il click sul contatto mostra la conversazione del contatto cliccato
+  $('.contact').click(function() {
+
+    // Seleziono l'attributo che hanno in comune .contact e .container-messages
+    var panel = $(this).attr('data-contact');
+
+    // Rimuovere la classe .active
+    $('.container-messages').removeClass('active');
+
+    // Aggiungo la classe .active al click del contatto corrispondente
+    $('.container-messages[data-contact="' + panel + '"]').addClass('active');
+
+  });
 
   // Funzioni
 
@@ -97,18 +122,19 @@ $( document ).ready(function() {
 
     // Validazione e aggiunta del testo alla chat
     if ( newText !== '' ) {
-      
-      // Aggiungo al messaggio l'orario di invio
-      $('.template .message span').text(actualTime());
-
-      // Aggiungo al messaggio il testo ottenuto dall'input
-      $('.template .message p').text(newText);
 
       // Clono il li del .template
       var newInChatMessage = $('.template .message').clone();
-
-      newInChatMessage.addClass('sent');
       
+      // Aggiungo la classe .sent per assegnargli il layout dato dalla classe stessa
+      newInChatMessage.addClass('sent');
+
+      // Aggiungo al messaggio il testo ottenuto dall'input
+      newInChatMessage.children('p').text(newText);
+      
+      // Aggiungo al messaggio l'orario di invio
+      newInChatMessage.children('span').text(actualTime());
+
       // Aggiungo il li ottenuto alla chat
       chatMessages.append(newInChatMessage);
 
@@ -117,6 +143,10 @@ $( document ).ready(function() {
     // Reset dell'input
     newMessage.val('');
 
+    // Scroll automatico del contenitore della chat
+    var chatContainer = $('.contents-main');
+    chatContainer.scrollTop(chatContainer.innerHeight());
+
   };
 
   // Funzione che visualizza messaggi ricevuti dopo tot tempo
@@ -124,17 +154,18 @@ $( document ).ready(function() {
 
     setTimeout( function() {
 
+      // Clono il li di .template
+      var newReceivedMessage = $('.template .message').clone();
+
+      // Aggiungo la classe .received per leggibilità
+      newReceivedMessage.addClass('received');
+
       // Aggiungo al messaggio di risposta un testo random
-      $('.template-contacts .message p').text(randomString());
+      newReceivedMessage.children('p').text(randomString());
 
       // Aggiungo al messaggio di risposta l'orario di invio
-      $('.template-contacts .message span').text(actualTime());
-      
-      // Clono il li di .template-contacts
-      var newReceivedMessage = $('.template-contacts .message').clone();
+      newReceivedMessage.children('span').text(actualTime());
 
-      newReceivedMessage.addClass('received');
-  
       // Aggiungo alla chat il messaggio clonato
       chatMessages.append(newReceivedMessage);
 
