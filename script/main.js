@@ -12,7 +12,7 @@ Boolzapp (Milestone 2)
 Risposta dall’interlocutore: ad ogni inserimento di un messaggio, l’utente riceverà un “ok” come risposta, che apparirà dopo 1 secondo.
 Ricerca utenti: scrivendo qualcosa nell’input a sinistra, vengono visualizzati solo i contatti il cui nome contiene le lettere inserite (es, Marco, Matteo Martina -> Scrivo “mar” rimangono solo Marco e Martina)
 
-Boolzapp (Milestone 2)
+Boolzapp (Milestone 3)
 Click sul contatto mostra la conversazione del contatto cliccato, è possibile inserire nuovi messaggi per ogni conversazione
 Cancella messaggio: cliccando sul messaggio appare un menu a tendina che permette di cancellare il messaggio selezionato
 */
@@ -24,8 +24,38 @@ $( document ).ready(function() {
   var sendIcon = $('.fa-paper-plane');
   var search = $('.new-chat');
 
-  // Funzione per cancellare i messaggi definita all'inizio per i messaggi statici
-  options();
+  // All'hover del messaggio compare l'icona
+  $('.message').mouseenter(function() {
+
+    // children è l'icona figlia di .message
+    $(this).children('i').addClass('active');
+
+  });
+
+  $('.message').mouseleave(function() {
+
+    // children è l'icona figlia di .message
+    $(this).children('i').removeClass('active');
+
+  });
+
+
+  // Al click dell'icona compaiono le opzioni
+  $('.message i').click(function() {
+
+    // next è .message-options, le opzioni dopo l'icona
+    $(this).next().toggleClass('active');
+
+  });
+
+
+  // Al click di .delete-message viene cancellato il messaggio
+  $('.delete-message').click(function() {
+
+    // parents('.message') è il padre che contiene .delete-message
+    $(this).parents('.message').remove();
+  });
+
 
   // Cambio dell'icona al focus dell'input
   newMessage.focus(function() {
@@ -57,7 +87,38 @@ $( document ).ready(function() {
     // Aggiunta di un messaggio ricevuto dai contatti
     contactsMessages();
 
-    options();
+    // All'hover del messaggio compare l'icona
+    $('.message').mouseenter(function() {
+
+      // children è l'icona figlia di .message
+      $(this).children('i').addClass('active');
+
+    });
+
+    $('.message').mouseleave(function() {
+
+      // children è l'icona figlia di .message
+      $(this).children('i').removeClass('active');
+
+    });
+
+
+    // Al click dell'icona compaiono le opzioni
+    $('.message i').click(function() {
+
+      // next è .message-options, le opzioni dopo l'icona
+      $(this).next().toggleClass('active');
+
+    });
+
+
+    // Al click di .delete-message viene cancellato il messaggio
+    $('.delete-message').click(function() {
+
+      // parents('.message') è il padre che contiene .delete-message
+      $(this).parents('.message').remove();
+    
+    });
 
   });
 
@@ -73,14 +134,10 @@ $( document ).ready(function() {
 
       // Aggiunta di un messaggio ricevuto dai contatti
       contactsMessages();
-
-      options();
+      
     }
 
   });
-
-  // Funzione per cancellare i messaggi definita all'inizio per i messaggi statici
-  options();
 
   
   // Filtrare contatti durante la digitazione in un input
@@ -161,8 +218,6 @@ $( document ).ready(function() {
       // Aggiungo il li ottenuto alla chat
       chatMessages.append(newInChatMessage);
 
-      options();
-
     }
 
     // Reset dell'input
@@ -201,7 +256,37 @@ $( document ).ready(function() {
       // Aggiungo alla chat il messaggio clonato
       chatMessages.append(newReceivedMessage);
 
-      options();
+      // All'hover del messaggio compare l'icona
+      $('.message').mouseenter(function() {
+
+      // children è l'icona figlia di .message
+      $(this).children('i').addClass('active');
+
+  });
+
+  $('.message').mouseleave(function() {
+
+    // children è l'icona figlia di .message
+    $(this).children('i').removeClass('active');
+
+  });
+
+
+  // Al click dell'icona compaiono le opzioni
+  $('.message i').click(function() {
+
+    // next è .message-options, le opzioni dopo l'icona
+    $(this).next().toggleClass('active');
+
+  });
+
+
+  // Al click di .delete-message viene cancellato il messaggio
+  $('.delete-message').click(function() {
+
+    // parents('.message') è il padre che contiene .delete-message
+    $(this).parents('.message').remove();
+  });
 
       userInfo.find('p').text( 'Ultimo accesso oggi alle ' + actualTime() );
 
@@ -267,29 +352,29 @@ $( document ).ready(function() {
   function options(){
 
     // All'hover del messaggio compare l'icona
-  $('.message').hover(function() {
+    $('#app').on('mouseover', '.message', function() {
 
     // children è l'icona figlia di .message
     $(this).children('i').toggleClass('active');
 
-  });
+    });
 
   
-  // Al click dell'icona compaiono le opzioni
-  $('.message i').click(function() {
+    // Al click dell'icona compaiono le opzioni
+    $('#app').on('click', '.message i', function() {
 
-    // next è .message-options, le opzioni dopo l'icona
-    $(this).next().toggleClass('active');
+      // next è .message-options, le opzioni dopo l'icona
+      $(this).next().toggleClass('active');
 
-  });
+    });
 
   
-  // Al click di .delete-message viene cancellato il messaggio
-  $('.delete-message').click(function() {
+    // Al click di .delete-message viene cancellato il messaggio
+    $('#app').on('click', '.delete-message', function() {
 
-    // parents('.message') è il padre che contiene .delete-message
-    $(this).parents('.message').remove();
-  });
+      // parents('.message') è il padre che contiene .delete-message
+      $(this).parents('.message').remove();
+    });
 
   };
 
