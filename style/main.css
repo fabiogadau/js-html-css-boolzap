@@ -233,6 +233,7 @@ header i:hover {
 
 /* Messaggi Chat */
 .contents-main .container-messages .message {
+  position: relative;
   float: left;
   clear: both;
   margin-bottom: 10px;
@@ -243,6 +244,41 @@ header i:hover {
   font-size: 14px;
   padding: 15px 5px 5px 10px;
   border-radius: 8px;
+}
+
+.message i {
+  display: none;
+  position: absolute;
+  left: 82%;
+  top: 10%;
+  font-size: 16px;
+  color: #b7b9bb;
+  cursor: pointer;
+}
+
+.message .message-options {
+  display: none;
+  position: absolute;
+  left: 15%;
+  top: 35%;
+  list-style: none;
+  text-align: center;
+  font-size: 14px;
+  width: 120px;
+  padding: 10px;
+  background-color: #fff;
+}
+
+.message .message-options li {
+  cursor: pointer;
+}
+
+.message .message-options li:first-child {
+  margin-bottom: 5px;
+}
+
+.message .message-options li:hover {
+  color: #b1b1b1;
 }
 
 .contents-main .container-messages .message p {
@@ -355,6 +391,14 @@ footer i:hover {
 }
 
 .container-messages.active {
+  display: block;
+}
+
+.message i.active {
+  display: block;
+}
+
+.message .message-options.active {
   display: block;
 }
 

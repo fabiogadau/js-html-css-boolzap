@@ -24,9 +24,11 @@ $( document ).ready(function() {
   var sendIcon = $('.fa-paper-plane');
   var search = $('.new-chat');
 
+  // Funzione per cancellare i messaggi definita all'inizio per i messaggi statici
+  options();
 
   // Cambio dell'icona al focus dell'input
-  newMessage.on('focus blur', function() {
+  newMessage.focus(function() {
     
     // Rimuovo l'icona precedente
     microphoneIcon.removeClass('active');
@@ -36,18 +38,15 @@ $( document ).ready(function() {
   
   });
 
-  
-  // All'uscita dall'input visualizzo di nuovo l'icona del microfono
   $('.contents-main').on('click', function() {
 
     // Rimuovo l'icona precedente
     sendIcon.removeClass('active');
 
-    // Aggiungo classe active per visualizzare l'icona del microfono
+    // Aggiungo classe active per visualizzare l'icona di invio messaggio
     microphoneIcon.addClass('active');
 
   });
-
   
   // Invio del messaggio al click dell'icona di invio messaggio
   sendIcon.click( function() {
@@ -57,7 +56,9 @@ $( document ).ready(function() {
 
     // Aggiunta di un messaggio ricevuto dai contatti
     contactsMessages();
-  
+
+    options();
+
   });
 
   
@@ -72,9 +73,14 @@ $( document ).ready(function() {
 
       // Aggiunta di un messaggio ricevuto dai contatti
       contactsMessages();
+
+      options();
     }
 
   });
+
+  // Funzione per cancellare i messaggi definita all'inizio per i messaggi statici
+  options();
 
   
   // Filtrare contatti durante la digitazione in un input
@@ -155,6 +161,8 @@ $( document ).ready(function() {
       // Aggiungo il li ottenuto alla chat
       chatMessages.append(newInChatMessage);
 
+      options();
+
     }
 
     // Reset dell'input
@@ -192,6 +200,8 @@ $( document ).ready(function() {
 
       // Aggiungo alla chat il messaggio clonato
       chatMessages.append(newReceivedMessage);
+
+      options();
 
       userInfo.find('p').text( 'Ultimo accesso oggi alle ' + actualTime() );
 
@@ -251,7 +261,37 @@ $( document ).ready(function() {
 
     return number;
 
-  }
+  };
+
+  // Funzione per cancellare un messaggio
+  function options(){
+
+    // All'hover del messaggio compare l'icona
+  $('.message').hover(function() {
+
+    // children è l'icona figlia di .message
+    $(this).children('i').toggleClass('active');
+
+  });
+
+  
+  // Al click dell'icona compaiono le opzioni
+  $('.message i').click(function() {
+
+    // next è .message-options, le opzioni dopo l'icona
+    $(this).next().toggleClass('active');
+
+  });
+
+  
+  // Al click di .delete-message viene cancellato il messaggio
+  $('.delete-message').click(function() {
+
+    // parents('.message') è il padre che contiene .delete-message
+    $(this).parents('.message').remove();
+  });
+
+  };
 
 
 
