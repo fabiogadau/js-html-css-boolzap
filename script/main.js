@@ -1,17 +1,14 @@
 /*
 * Boolzap
-
 Boolzapp (Milestone 1)
 Replica della grafica (allegata sotto con gli assets) con la possibilità di avere messaggi stilati e posizionati diversamente in base a: messaggio dall’utente (verdi) e messaggio dall’interlocutore (bianco) assegnando due classi CSS diverse.
 Aggiunta di un messaggio: l’utente scrive un testo nella parte bassa e cliccando icona ‘invia il testo’ viene aggiunto al thread sopra, come messaggio verde (ricordate focus() )
 Font family: Lato
 Messaggi visibili inizialmente sono inseriti statici nell’HTML
 Usate un template nell’html e clone() per l’ inserimento del messaggio da fare in JS
-
 Boolzapp (Milestone 2)
 Risposta dall’interlocutore: ad ogni inserimento di un messaggio, l’utente riceverà un “ok” come risposta, che apparirà dopo 1 secondo.
 Ricerca utenti: scrivendo qualcosa nell’input a sinistra, vengono visualizzati solo i contatti il cui nome contiene le lettere inserite (es, Marco, Matteo Martina -> Scrivo “mar” rimangono solo Marco e Martina)
-
 Boolzapp (Milestone 3)
 Click sul contatto mostra la conversazione del contatto cliccato, è possibile inserire nuovi messaggi per ogni conversazione
 Cancella messaggio: cliccando sul messaggio appare un menu a tendina che permette di cancellare il messaggio selezionato
@@ -23,38 +20,6 @@ $( document ).ready(function() {
   var microphoneIcon = $('.fa-microphone');
   var sendIcon = $('.fa-paper-plane');
   var search = $('.new-chat');
-
-  // All'hover del messaggio compare l'icona
-  $('.message').mouseenter(function() {
-
-    // children è l'icona figlia di .message
-    $(this).children('i').addClass('active');
-
-  });
-
-  $('.message').mouseleave(function() {
-
-    // children è l'icona figlia di .message
-    $(this).children('i').removeClass('active');
-
-  });
-
-
-  // Al click dell'icona compaiono le opzioni
-  $('.message i').click(function() {
-
-    // next è .message-options, le opzioni dopo l'icona
-    $(this).next().toggleClass('active');
-
-  });
-
-
-  // Al click di .delete-message viene cancellato il messaggio
-  $('.delete-message').click(function() {
-
-    // parents('.message') è il padre che contiene .delete-message
-    $(this).parents('.message').remove();
-  });
 
 
   // Cambio dell'icona al focus dell'input
@@ -86,39 +51,6 @@ $( document ).ready(function() {
 
     // Aggiunta di un messaggio ricevuto dai contatti
     contactsMessages();
-
-    // All'hover del messaggio compare l'icona
-    $('.message').mouseenter(function() {
-
-      // children è l'icona figlia di .message
-      $(this).children('i').addClass('active');
-
-    });
-
-    $('.message').mouseleave(function() {
-
-      // children è l'icona figlia di .message
-      $(this).children('i').removeClass('active');
-
-    });
-
-
-    // Al click dell'icona compaiono le opzioni
-    $('.message i').click(function() {
-
-      // next è .message-options, le opzioni dopo l'icona
-      $(this).next().toggleClass('active');
-
-    });
-
-
-    // Al click di .delete-message viene cancellato il messaggio
-    $('.delete-message').click(function() {
-
-      // parents('.message') è il padre che contiene .delete-message
-      $(this).parents('.message').remove();
-    
-    });
 
   });
 
@@ -256,38 +188,6 @@ $( document ).ready(function() {
       // Aggiungo alla chat il messaggio clonato
       chatMessages.append(newReceivedMessage);
 
-      // All'hover del messaggio compare l'icona
-      $('.message').mouseenter(function() {
-
-      // children è l'icona figlia di .message
-      $(this).children('i').addClass('active');
-
-  });
-
-  $('.message').mouseleave(function() {
-
-    // children è l'icona figlia di .message
-    $(this).children('i').removeClass('active');
-
-  });
-
-
-  // Al click dell'icona compaiono le opzioni
-  $('.message i').click(function() {
-
-    // next è .message-options, le opzioni dopo l'icona
-    $(this).next().toggleClass('active');
-
-  });
-
-
-  // Al click di .delete-message viene cancellato il messaggio
-  $('.delete-message').click(function() {
-
-    // parents('.message') è il padre che contiene .delete-message
-    $(this).parents('.message').remove();
-  });
-
       userInfo.find('p').text( 'Ultimo accesso oggi alle ' + actualTime() );
 
       // Scroll automatico del contenitore della chat
@@ -348,7 +248,7 @@ $( document ).ready(function() {
 
   };
 
-  // Funzione per cancellare un messaggio
+  // Funzione per cancellare un messaggio (attualmente non funzionante)
   function options(){
 
     // All'hover del messaggio compare l'icona
@@ -377,32 +277,6 @@ $( document ).ready(function() {
     });
 
   };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
