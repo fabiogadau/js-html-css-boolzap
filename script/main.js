@@ -71,6 +71,8 @@ $( document ).ready(function() {
 
   });
 
+  options();
+
   
   // Filtrare contatti durante la digitazione in un input
   search.keyup(function() {
@@ -252,10 +254,10 @@ $( document ).ready(function() {
   function options(){
 
     // All'hover del messaggio compare l'icona
-    $('#app').on('mouseover', '.message', function() {
+    $('#app').on('mouseenter', '.message', function() {
 
     // children è l'icona figlia di .message
-    $(this).children('i').toggleClass('active');
+    $(this).children('i').addClass('active');
 
     });
 
@@ -275,6 +277,13 @@ $( document ).ready(function() {
       // parents('.message') è il padre che contiene .delete-message
       $(this).parents('.message').remove();
     });
+
+    $('#app').on('mouseleave', '.message', function() {
+
+      // children è l'icona figlia di .message
+      $(this).children('i').removeClass('active');
+  
+      });
 
   };
 
