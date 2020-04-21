@@ -71,6 +71,7 @@ $( document ).ready(function() {
 
   });
 
+  // Richiamo la funzione che serve a cancellare i messaggi
   options();
 
   
@@ -250,7 +251,7 @@ $( document ).ready(function() {
 
   };
 
-  // Funzione per cancellare un messaggio (attualmente non funzionante)
+  // Funzione per cancellare un messaggio
   function options(){
 
     // All'hover del messaggio compare l'icona
