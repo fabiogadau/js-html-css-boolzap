@@ -383,8 +383,9 @@ footer i:hover {
   display: flex;
 }
 
-.contacts-messages {
-  display: none;
+.contact.selected {
+  background-color: #eaebeb;
+  border-bottom: none;
 }
 
 .container-messages {

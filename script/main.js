@@ -72,7 +72,7 @@ $( document ).ready(function() {
   });
 
   // Richiamo la funzione che serve a cancellare i messaggi
-  options();
+  messageOptions();
 
   
   // Filtrare contatti durante la digitazione in un input
@@ -103,6 +103,11 @@ $( document ).ready(function() {
   // Il click sul contatto mostra la conversazione del contatto cliccato
   $('.contact').click(function() {
 
+    // Aggiungo un background-color diverso al contatto cliccato
+    var actualContact = $(this);
+    $('.contact').removeClass('selected');
+    actualContact.addClass('selected');
+
     // Seleziono l'attributo che hanno in comune .contact e .container-messages
     var panel = $(this).attr('data-contact');
 
@@ -117,6 +122,10 @@ $( document ).ready(function() {
 
     // Stessa cosa con .contents-user
     $('.contents-user[data-contact="' + panel + '"]').addClass('active');
+
+    // Pulisco l'input e ri-visualizzo i contatti
+    $('.contact').show();
+    search.val('');
 
   });
 
@@ -191,7 +200,17 @@ $( document ).ready(function() {
       // Aggiungo alla chat il messaggio clonato
       chatMessages.append(newReceivedMessage);
 
+      // Inserisco al contatto attuale l'orario di ultimo accesso
       userInfo.find('p').text( 'Ultimo accesso oggi alle ' + actualTime() );
+
+      // Inserisco al contatto attuale l'ultimo orario di invio messaggio
+      var contactTime = $('.contact.selected').children('span');
+      contactTime.text(actualTime());
+
+      // Inserisco al contatto attuale l'ultimo messaggio inviato
+      var newReceivedMessageText = newReceivedMessage.children('p').text();
+      var contactText = $('.contact.selected').find('p');
+      contactText.text(newReceivedMessageText);
 
       // Scroll automatico del contenitore della chat
       var chatContainer = $('.contents-main');
@@ -252,7 +271,7 @@ $( document ).ready(function() {
   };
 
   // Funzione per cancellare un messaggio
-  function options(){
+  function messageOptions(){
 
     // All'hover del messaggio compare l'icona
     $('#app').on('mouseenter', '.message', function() {
@@ -279,6 +298,7 @@ $( document ).ready(function() {
       $(this).parents('.message').remove();
     });
 
+    
     $('#app').on('mouseleave', '.message', function() {
 
       // children è l'icona figlia di .message
